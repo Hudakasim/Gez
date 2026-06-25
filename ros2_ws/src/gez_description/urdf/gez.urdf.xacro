@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gez">
+
+  <!-- =========== MATERIALS =========== -->
+  <material name="sasi_renk">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="tekerlek_renk">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+  <material name="lidar_renk">
+    <color rgba="0.8 0.2 0.2 1.0"/>
+  </material>
+  <material name="sarhos_renk">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+
+  <!-- =========== BASE LINK (sanal merkez) =========== -->
+  <link name="base_link"/>
+
+  <!-- =========== ALT SASE =========== -->
+  <link name="sase1">
+    <visual>
+      <geometry>
+        <box size="0.255 0.150 0.002"/>
+      </geometry>
+      <material name="sasi_renk"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.255 0.150 0.002"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="sase1_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sase1"/>
+    <origin xyz="-0.0795 0 0.0115" rpy="0 0 0"/>
+  </joint>
+
+  <!-- =========== UST SASE =========== -->
+  <link name="sase2">
+    <visual>
+      <geometry>
+        <box size="0.255 0.150 0.002"/>
+      </geometry>
+      <material name="sasi_renk"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.255 0.150 0.002"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="sase2_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sase2"/>
+    <origin xyz="-0.0795 0 0.0465" rpy="0 0 0"/>
+  </joint>
+
+  <!-- =========== SOL TEKERLEK =========== -->
+  <link name="sol_tekerlek">
+    <visual>
+      <geometry>
+        <cylinder radius="0.0325" length="0.028"/>
+      </geometry>
+      <material name="tekerlek_renk"/>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.0325" length="0.028"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+  </link>
+  <joint name="sol_tekerlek_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="sol_tekerlek"/>
+    <origin xyz="0 0.0845 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- =========== SAG TEKERLEK =========== -->
+  <link name="sag_tekerlek">
+    <visual>
+      <geometry>
+        <cylinder radius="0.0325" length="0.028"/>
+      </geometry>
+      <material name="tekerlek_renk"/>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.0325" length="0.028"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+  </link>
+  <joint name="sag_tekerlek_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="sag_tekerlek"/>
+    <origin xyz="0 -0.0845 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- =========== SARHOS TEKERLEK =========== -->
+  <link name="sarhos_tekerlek">
+    <visual>
+      <geometry>
+        <sphere radius="0.020"/>
+      </geometry>
+      <material name="sarhos_renk"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.020"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="sarhos_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sarhos_tekerlek"/>
+    <origin xyz="-0.187 0 -0.0125" rpy="0 0 0"/>
+  </joint>
+
+  <!-- =========== LIDAR =========== -->
+  <link name="lidar_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.0275" length="0.023"/>
+      </geometry>
+      <material name="lidar_renk"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.0275" length="0.023"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <origin xyz="-0.0148 0 0.1088" rpy="0 0 0"/>
+  </joint>
+
+</robot>
