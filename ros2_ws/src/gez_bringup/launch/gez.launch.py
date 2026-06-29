@@ -1,7 +1,8 @@
 import os
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess
+from launch.actions import IncludeLaunchDescription, ExecuteProcess, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
@@ -32,8 +33,21 @@ def generate_launch_description():
         output='screen'
     )
 
+    # 4. RPLIDAR C1
+    sllidar_path = get_package_share_directory('sllidar_ros2')
+    lidar_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(sllidar_path, 'launch', 'sllidar_c1_launch.py')
+        ),
+        launch_arguments={
+            'serial_port': '/dev/ttyUSB1',
+            'frame_id': 'lidar_link',
+        }.items()
+    )
+
     return LaunchDescription([
         microros_agent,
         display_launch,
         odom_to_tf,
+        lidar_launch,
     ])

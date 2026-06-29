@@ -1,0 +1,12 @@
+digraph G {
+"base_link" -> "sag_tekerlek"[label=" Broadcaster: default_authority\nAverage rate: 18.321\nBuffer length: 5.349\nMost recent transform: 814.71\nOldest transform: 809.361\n"];
+"base_link" -> "sol_tekerlek"[label=" Broadcaster: default_authority\nAverage rate: 18.321\nBuffer length: 5.349\nMost recent transform: 814.71\nOldest transform: 809.361\n"];
+"base_link" -> "lidar_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "sarhos_tekerlek"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "sase1"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "sase2"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1782756558.464593"[ shape=plaintext ] ;
+}->"base_link";
+}
